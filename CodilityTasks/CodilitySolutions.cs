@@ -5,6 +5,62 @@ namespace Codility
 {
     public class CodilitySolutions
     {
+        public int[] CyclicRotation_solution(int[] A, int K)
+        {
+            /*
+            An array A consisting of N integers is given. 
+            Rotation of the array means that each element is shifted right by one index, 
+            and the last element of the array is moved to the first place. 
+            The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.
+            Write a function that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
+            For example:
+                A = [3, 8, 9, 7, 6]
+                K = 3
+                the function should return [9, 7, 6, 3, 8]. 
+                Three rotations were made:
+                [3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
+                [6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
+                [7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]
+            
+                A = [0, 0, 0]
+                K = 1
+                return [0, 0, 0]
+
+                A = [1, 2, 3, 4]
+                K = 4
+                return [1, 2, 3, 4]
+            
+            Assume that:
+            N and K are integers within the range [0..100];
+            each element of array A is an integer within the range [−1,000..1,000].
+            In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
+            */
+            int[] result = new int[A.Length];
+
+            if (A.Length == 0)
+            {
+                return A;
+            }
+
+            //find array splitting position
+            int start = K % A.Length;
+
+            if (start > 0)
+            {
+                //take last K elements and copy them to the beginning of result
+                Array.Copy(A, A.Length - start, result, 0, start);
+                //take first elements before Kth position and copy
+                Array.Copy(A, 0, result, start, A.Length - start);
+            }
+            else
+            {
+                //in case of shifting to the length of A, just return A
+                return A;
+            }
+
+            return result;
+        }
+
         public int BinaryGap_solution(int N)
         {
             /*

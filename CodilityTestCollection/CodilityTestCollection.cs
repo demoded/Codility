@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Codility;
+using System.Linq;
 
 namespace Codility_UnitTests
 {
@@ -11,6 +12,18 @@ namespace Codility_UnitTests
         public CodilityTestCollection()
         {
             _codility = new CodilitySolutions();
+        }
+
+        [Theory]
+        [InlineData(new int[] { 3, 8, 9, 7, 6, 1, 2 }, 3, new int[] { 6, 1, 2, 3, 8, 9, 7})]
+        [InlineData(new int[] { 0, 0, 0 }, 1, new int[] { 0, 0, 0 })]
+        [InlineData(new int[] { 1, 2, 3, 4 }, 4, new int[] { 1, 2, 3, 4 })]
+        [InlineData(new int[] { 1 }, 3, new int[] { 1 })]
+        [InlineData(new int[] { }, 1, new int[] { })]
+        [InlineData(new int[] { 1, 2, 3 }, 7, new int[] { 3, 1, 2 })]
+        public void CyclicRotationTest(int[] A, int K, int[] expected)
+        {
+            Assert.Equal(_codility.CyclicRotation_solution(A, K), expected);
         }
 
         [Theory]
