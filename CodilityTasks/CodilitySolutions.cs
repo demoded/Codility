@@ -6,6 +6,25 @@ namespace Codility
 {
     public class CodilitySolutions
     {
+        public int PermMissingElem_solution(int[] A)
+        {
+            int expected = 1;
+            if (A.Length > 0)
+            {
+                Array.Sort(A);
+                for (int i = 0; i < A.Length; i++)
+                {
+                    if (A[i] != expected)
+                    {
+                        return expected;
+                    }
+                    expected++;
+                }
+            }
+
+            return expected;
+        }
+
         public int FrogJump_solution(int X, int Y, int D)
         {
             /*

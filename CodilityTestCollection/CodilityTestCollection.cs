@@ -15,6 +15,19 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 2, 3, 1, 5 }, 4)]
+        [InlineData(new int[] { }, 1)]
+        [InlineData(new int[] { 2 }, 1)]
+        [InlineData(new int[] { 1, 3 }, 2)]
+        [InlineData(new int[] { 2, 3 }, 1)]
+        [InlineData(new int[] { 1, 2 }, 3)]
+
+        public void PermMissingElemTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.PermMissingElem_solution(A));
+        }
+
+        [Theory]
         [InlineData(10, 85, 30, 3)]
         public void FrogJmpTest(int X, int Y, int D, int expected)
         {
