@@ -15,12 +15,19 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(10, 85, 30, 3)]
+        public void FrogJmpTest(int X, int Y, int D, int expected)
+        {
+            Assert.Equal(expected, _codility.FrogJump_solution(X, Y, D));
+        }
+
+        [Theory]
         [InlineData(new int[] { 9, 3, 9, 3, 9, 7, 9 }, 7)]
         [InlineData(new int[] { 42 }, 42)]
         [InlineData(new int[] { }, 0)]
         public void OddOccurrencesInArrayTest(int[] A, int expected)
         {
-            Assert.Equal(_codility.OddOccurrencesInArray_solution(A), expected);
+            Assert.Equal(expected, _codility.OddOccurrencesInArray_solution(A));
         }
 
         [Theory]
@@ -32,7 +39,7 @@ namespace Codility_UnitTests
         [InlineData(new int[] { 1, 2, 3 }, 7, new int[] { 3, 1, 2 })]
         public void CyclicRotationTest(int[] A, int K, int[] expected)
         {
-            Assert.Equal(_codility.CyclicRotation_solution(A, K), expected);
+            Assert.Equal(expected, _codility.CyclicRotation_solution(A, K));
         }
 
         [Theory]
@@ -41,7 +48,7 @@ namespace Codility_UnitTests
         [InlineData(32, 0)]
         public void BinaryGapTest(int input, int expected)
         {
-            Assert.Equal(_codility.BinaryGap_solution(input), expected);
+            Assert.Equal(expected, _codility.BinaryGap_solution(input));
         }
 
         [Theory]
@@ -51,7 +58,7 @@ namespace Codility_UnitTests
         [InlineData(new int[]{2}, 1)]
         public void MissingInteger(int[] input, int expected)
         {
-            Assert.Equal(_codility.MissingInteger_solution(input), expected);
+            Assert.Equal(expected, _codility.MissingInteger_solution(input));
         }
     }
 }
