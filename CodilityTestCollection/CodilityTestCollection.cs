@@ -15,6 +15,15 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 9, 3, 9, 3, 9, 7, 9 }, 7)]
+        [InlineData(new int[] { 42 }, 42)]
+        [InlineData(new int[] { }, 0)]
+        public void OddOccurrencesInArrayTest(int[] A, int expected)
+        {
+            Assert.Equal(_codility.OddOccurrencesInArray_solution(A), expected);
+        }
+
+        [Theory]
         [InlineData(new int[] { 3, 8, 9, 7, 6, 1, 2 }, 3, new int[] { 6, 1, 2, 3, 8, 9, 7})]
         [InlineData(new int[] { 0, 0, 0 }, 1, new int[] { 0, 0, 0 })]
         [InlineData(new int[] { 1, 2, 3, 4 }, 4, new int[] { 1, 2, 3, 4 })]
