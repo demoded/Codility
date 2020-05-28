@@ -15,6 +15,15 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 3, 1, 2, 4, 3 }, 1)]
+        [InlineData(new int[] { 1000, 2000 }, 1000)]
+        [InlineData(new int[] { 2000, 2000 }, 0)]
+        public void TapeEquilibriumTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.TapeEquilibrium_solution(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 2, 3, 1, 5 }, 4)]
         [InlineData(new int[] { }, 1)]
         [InlineData(new int[] { 2 }, 1)]
