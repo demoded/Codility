@@ -15,6 +15,13 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(5, new int[] { 1, 3, 1, 4, 2, 3, 5, 4 }, 6)]
+        public void FrogRiverOneTest(int X, int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.FrogRiverOne_solution(X, A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 3, 1, 2, 4, 3 }, 1)]
         [InlineData(new int[] { 1000, 2000 }, 1000)]
         [InlineData(new int[] { 2000, 2000 }, 0)]
