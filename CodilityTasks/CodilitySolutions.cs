@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Globalization;
 using System.Linq;
 
 namespace Codility
@@ -9,6 +10,89 @@ namespace Codility
     /// </summary>
     public class CodilitySolutions
     {
+
+        /// <summary>
+        /// You are given N counters, initially set to 0, and you have two possible operations on them:
+        /// <list type="bullet">
+        /// <item>increase(X) − counter X is increased by 1,</item>
+        /// <item>max counter − all counters are set to the maximum value of any counter.</item></list>
+        /// A non-empty array A of M integers is given. This array represents consecutive operations:
+        /// <code><list type="table">
+        /// <item>if A[K] = X, such that 1 ≤ X ≤ N, then operation K is increase(X),</item>
+        /// <item>if A[K] = N + 1 then operation K is max counter.</item>
+        /// </list></code>
+        /// <example>For example, given integer N = 5 and array A such that:
+        /// <code>
+        ///     A[0] = 3
+        ///     A[1] = 4
+        ///     A[2] = 4
+        ///     A[3] = 6
+        ///     A[4] = 1
+        ///     A[5] = 4
+        ///     A[6] = 4
+        /// </code>
+        /// the values of the counters after each consecutive operation will be:
+        /// <code>
+        ///     (0, 0, 1, 0, 0)
+        ///     (0, 0, 1, 1, 0)
+        ///     (0, 0, 1, 2, 0)
+        ///     (2, 2, 2, 2, 2)
+        ///     (3, 2, 2, 2, 2)
+        ///     (3, 2, 2, 3, 2)
+        ///     (3, 2, 2, 4, 2)
+        /// </code>
+        /// the function should return [3, 2, 2, 4, 2], as explained above.
+        /// </example> 
+        /// The goal is to calculate the value of every counter after all operations.
+        /// Write a function that, given an integer N and a non-empty array A consisting of M integers, 
+        /// returns a sequence of integers representing the values of the counters.
+        /// 
+        /// Write an efficient algorithm for the following assumptions:
+        /// N and M are integers within the range [1..100,000];
+        /// each element of array A is an integer within the range [1..N + 1].
+        /// </summary>
+        /// <param name="N"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int[] MaxCounters(int N, int[] A)
+        {
+            int[] ret = new int[N];
+            int runningMax = 0;
+            int updatedMax = 0;
+
+            foreach (int i in A)
+            {
+                if (i <= N)
+                {
+                    if (ret[i - 1] < updatedMax)
+                    {
+                        ret[i - 1] = updatedMax;
+                    }
+
+                    ret[i - 1]++;
+
+                    if (runningMax < ret[i - 1])
+                    {
+                        runningMax = ret[i - 1];
+                    }
+                }
+                else if (i == N + 1)
+                {
+                    updatedMax = runningMax;
+                }
+            }
+
+            for (int i = 0; i < ret.Length; i++)
+            {
+                if (ret[i] < updatedMax)
+                {
+                    ret[i] = updatedMax;
+                }
+            }
+
+            return ret;
+        }
+
         /// <summary>
         /// A small frog wants to get to the other side of a river.
         /// The frog is initially located on one bank of the river(position 0) 

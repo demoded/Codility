@@ -15,6 +15,14 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(5, new int[] { 3, 4, 4, 6, 1, 4, 4 }, new int[] { 3, 2, 2, 4, 2 })]
+        [InlineData(1, new int[] { 2, 1, 1, 2, 1 }, new int[] { 3 })]
+        public void MaxCountersTest(int N, int[] A, int[] expected)
+        {
+            Assert.Equal(expected, _codility.MaxCounters(N, A));
+        }
+
+        [Theory]
         [InlineData(5, new int[] { 1, 3, 1, 4, 2, 3, 5, 4 }, 6)]
         public void FrogRiverOneTest(int X, int[] A, int expected)
         {
