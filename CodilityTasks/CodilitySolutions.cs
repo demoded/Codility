@@ -10,7 +10,49 @@ namespace Codility
     /// </summary>
     public class CodilitySolutions
     {
+        /// <summary>
+        /// A permutation is a sequence containing each element from 1 to N once, and only once.
+        /// <example>For example, array A such that:
+        /// <list type="table">   
+        /// <item>A[0] = 4</item>
+        /// <item>A[1] = 1</item>
+        /// <item>A[2] = 3</item>
+        /// <item>A[3] = 2</item></list>
+        /// is a permutation, 
+        /// but array A such that:
+        /// <list type="table">
+        /// <item>A[0] = 4</item>
+        /// <item>A[1] = 1</item>
+        /// <item>A[2] = 3</item></list>
+        /// is not a permutation, because value 2 is missing.
+        ///</example>
+        /// The goal is to check whether array A is a permutation. 
+        /// Write a function that, given an array A, returns 1 if array A is a permutation and 0 if it is not.
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int PermCheck(int[] A)
+        {
+            Array.Sort(A);
+            int expected = A[0];
 
+            if (expected != 1) return 0;
+
+            foreach (int i in A)
+            {
+                if (i == expected)
+                {
+                    expected++;
+                    continue;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
         /// <summary>
         /// You are given N counters, initially set to 0, and you have two possible operations on them:
         /// <list type="bullet">

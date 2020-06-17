@@ -15,6 +15,18 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 4, 1, 3 ,2 }, 1)]
+        [InlineData(new int[] { 4, 1, 3 }, 0)]
+        [InlineData(new int[] { 4, 1 }, 0)]
+        [InlineData(new int[] { 2, 1 }, 1)]
+        [InlineData(new int[] { 1, 1 }, 0)]
+        [InlineData(new int[] { 4 }, 0)]
+        public void PermCheckTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.PermCheck(A));
+        }
+
+        [Theory]
         [InlineData(5, new int[] { 3, 4, 4, 6, 1, 4, 4 }, new int[] { 3, 2, 2, 4, 2 })]
         [InlineData(1, new int[] { 2, 1, 1, 2, 1 }, new int[] { 3 })]
         public void MaxCountersTest(int N, int[] A, int[] expected)
