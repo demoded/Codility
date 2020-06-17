@@ -15,6 +15,14 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(6, 11, 2, 3)]
+        [InlineData(0, 0, 11, 1)]
+        public void CountDiv(int A, int B, int K, int expected)
+        {
+            Assert.Equal(expected, _codility.CountDiv(A, B, K));
+        }
+
+        [Theory]
         [InlineData(new int[] { 4, 1, 3 ,2 }, 1)]
         [InlineData(new int[] { 4, 1, 3 }, 0)]
         [InlineData(new int[] { 4, 1 }, 0)]
