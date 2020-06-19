@@ -9,6 +9,7 @@
             Collection of Codility lessons
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.GenomicRangeQuery(System.String,System.Int32[],System.Int32[])" -->
         <member name="M:Codility.CodilitySolutions.CountDiv(System.Int32,System.Int32,System.Int32)">
             <summary>
             Write a function that, given three integers A, B and K, 

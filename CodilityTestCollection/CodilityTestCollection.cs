@@ -15,6 +15,13 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData("CAGCCTA", new int[] { 2, 5, 0 }, new int[] { 4, 5, 6 }, new int[] { 2, 4, 1 })]
+        public void GenomicRangeQueryTest(String S, int[] P, int[] Q, int[] expected)
+        {
+            Assert.Equal(expected, _codility.GenomicRangeQuery(S, P, Q));
+        }
+
+        [Theory]
         [InlineData(6, 11, 2, 3)]
         [InlineData(0, 0, 11, 1)]
         public void CountDiv(int A, int B, int K, int expected)
