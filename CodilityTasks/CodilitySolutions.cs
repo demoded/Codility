@@ -43,36 +43,45 @@ namespace Codility
         /// <returns></returns>
         public int[] GenomicRangeQuery(String S, int[] P, int[] Q)
         {
-            //Dictionary<char, int> impact = new Dictionary<char, int> { { 'A', 1 }, { 'C', 2 }, { 'G', 3 }, { 'T', 4 } };
-            int[] impactInput = new int[S.Length];
-            int impactInt = 0;
             int[] ret = new int[P.Length];
+            int[,] prefixSums = new int[3, S.Length + 1];
 
+            //calculating prefix sums
             for (int i = 0; i < S.Length; i++)
             {
+                int a = 0, c = 0, g = 0;
                 switch (S[i])
                 {
-                    case 'A': impactInt = 1; break;
-                    case 'C': impactInt = 2; break;
-                    case 'G': impactInt = 3; break;
-                    case 'T': impactInt = 4; break;
+                    case 'A': a = 1; break;
+                    case 'C': c = 1; break;
+                    case 'G': g = 1; break;
                 }
 
-                impactInput[i] = impactInt;
+                prefixSums[0, i + 1] = prefixSums[0, i] + a;
+                prefixSums[1, i + 1] = prefixSums[1, i] + c;
+                prefixSums[2, i + 1] = prefixSums[2, i] + g;
             }
 
-            for (int i = 0; i < S.Length; i++)
+            for (int i = 0; i < P.Length; i++)
             {
-                impactInt = impactInput[i];
-                for (int j = 0; j < P.Length; j++)
+                int rangeStart = P[i];
+                int rangeEnd = Q[i]+1;
+
+                if ((prefixSums[0, rangeEnd] - prefixSums[0, rangeStart]) > 0) //at least one A nucleotid found
                 {
-                    if (i >= P[j] && i <= Q[j])
-                    {
-                        if (ret[j] == 0 || ret[j] > impactInt)
-                        {
-                            ret[j] = impactInt;
-                        }
-                    }
+                    ret[i] = 1; //return A nucleotid index
+                }
+                else if ((prefixSums[1, rangeEnd] - prefixSums[1, rangeStart]) > 0) //at least one C nucleotid found
+                {
+                    ret[i] = 2; //return C nucleotid index
+                }
+                else if ((prefixSums[2, rangeEnd] - prefixSums[2, rangeStart]) > 0) //at least on G nucleotid found
+                {
+                    ret[i] = 3; //return G nucleotid index
+                }
+                else
+                {
+                    ret[i] = 4; //return T nucleotid index
                 }
             }
 
