@@ -15,6 +15,14 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 4, 2, 2, 5, 1, 5, 8 }, 1)]
+        [InlineData(new int[] { 100, -100 }, 0)]
+        public void MinAvgTwoSliceTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.MinAvgTwoSlice(A));
+        }
+
+        [Theory]
         [InlineData("CAGCCTA", new int[] { 2, 5, 0 }, new int[] { 4, 5, 6 }, new int[] { 2, 4, 1 })]
         [InlineData("A", new int[] { 0 }, new int[] { 0 }, new int[] { 1 })]
         public void GenomicRangeQueryTest(String S, int[] P, int[] Q, int[] expected)

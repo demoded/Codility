@@ -12,6 +12,39 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int MinAvgTwoSlice(int[] A)
+        {
+            int[] prefixSum = new int[A.Length+1];
+            double minAvg = int.MaxValue;
+            int minStartPos = 0;
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                prefixSum[i + 1] = prefixSum[i] + A[i];
+            }
+
+            for (int i = 1; i < prefixSum.Length-1; i++)
+            {
+                for (int j = i+1; j < prefixSum.Length; j++)
+                {
+                    int sliceLength = j - i + 1;
+                    double avg = (double)(prefixSum[j] - prefixSum[i-1]) / sliceLength;
+                    if (avg < minAvg )
+                    {
+                        minAvg = avg;
+                        minStartPos = i;
+                    }
+                }
+            }
+
+            return minStartPos-1;
+        }
+
+        /// <summary>
         /// A DNA sequence can be represented as a string consisting of the letters A, C, G and T, which correspond to the types of successive nucleotides in the sequence. Each nucleotide has an impact factor, which is an integer. Nucleotides of types A, C, G and T have impact factors of 1, 2, 3 and 4, respectively. You are going to answer several queries of the form: What is the minimal impact factor of nucleotides contained in a particular part of the given DNA sequence?
         /// The DNA sequence is given as a non-empty string S = S[0]S[1]...S[N - 1] consisting of N characters.There are M queries, which are given in non-empty arrays P and Q, each consisting of M integers.The K-th query(0 ≤ K<M) requires you to find the minimal impact factor of nucleotides contained in the DNA sequence between positions P[K] and Q[K] (inclusive).
         /// <example>For example, consider string S = CAGCCTA and arrays P, Q such that:

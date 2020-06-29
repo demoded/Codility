@@ -9,6 +9,13 @@
             Collection of Codility lessons
             </summary>
         </member>
+        <member name="M:Codility.CodilitySolutions.MinAvgTwoSlice(System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="A"></param>
+            <returns></returns>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.GenomicRangeQuery(System.String,System.Int32[],System.Int32[])" -->
         <member name="M:Codility.CodilitySolutions.CountDiv(System.Int32,System.Int32,System.Int32)">
             <summary>
