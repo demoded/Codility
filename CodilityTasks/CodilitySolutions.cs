@@ -12,7 +12,39 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
-        /// 
+        /// A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
+        /// <example>For example, array A such that:
+        /// <list type="table">
+        /// <item>A[0] = 4</item>
+        /// <item>A[1] = 2</item>
+        /// <item>A[2] = 2</item>
+        /// <item>A[3] = 5</item>
+        /// <item>A[4] = 1</item>
+        /// <item>A[5] = 5</item>
+        /// <item>A[6] = 8</item></list>
+        /// contains the following example slices:
+        /// <list type="number">
+        /// <item>slice(1, 2), whose average is (2 + 2) / 2 = 2;</item>
+        /// <item>slice(3, 4), whose average is (5 + 1) / 2 = 3;</item>
+        /// <item>slice(1, 4), whose average is (2 + 2 + 5 + 1) / 4 = 2.5.</item>
+        /// </list>
+        /// </example>
+        /// The goal is to find the starting position of a slice whose average is minimal. Write a function that, given a non-empty array A consisting of N integers, returns the starting position of the slice with the minimal average. If there is more than one slice with a minimal average, you should return the smallest starting position of such a slice.
+        /// <example>For example, given array A such that:
+        /// <list type="table">
+        /// <item>A[0] = 4</item>
+        /// <item>A[1] = 2</item>
+        /// <item>A[2] = 2</item>
+        /// <item>A[3] = 5</item>
+        /// <item>A[4] = 1</item>
+        /// <item>A[5] = 5</item>
+        /// <item>A[6] = 8</item></list>
+        /// the function should return 1, as explained above.
+        /// </example>
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[2..100, 000];</item>
+        /// <item>each element of array A is an integer within the range[−10, 000..10, 000].</item></list>
         /// </summary>
         /// <param name="A"></param>
         /// <returns></returns>
@@ -22,21 +54,30 @@ namespace Codility
             double minAvg = int.MaxValue;
             int minStartPos = 0;
 
+            //calculate prefux Sums
             for (int i = 0; i < A.Length; i++)
             {
                 prefixSum[i + 1] = prefixSum[i] + A[i];
             }
 
-            for (int i = 1; i < prefixSum.Length-1; i++)
+            //The trick here is that only average of slices by 2 and 3 needs to be checked. 
+            //Explanations and mathematical proofs can be found by task title "MinAvgTwoSlice"
+            for (int i = 2; i < prefixSum.Length; i++)
             {
-                for (int j = i+1; j < prefixSum.Length; j++)
+                double avg2 = (double)(prefixSum[i] - prefixSum[i-2]) / 2;
+                if (minAvg > avg2)
                 {
-                    int sliceLength = j - i + 1;
-                    double avg = (double)(prefixSum[j] - prefixSum[i-1]) / sliceLength;
-                    if (avg < minAvg )
+                    minAvg = avg2;
+                    minStartPos = i-1;
+                }
+
+                if (i >= 3)
+                {
+                    double avg3 = (double)(prefixSum[i] - prefixSum[i-3]) / 3;
+                    if (minAvg > avg3)
                     {
-                        minAvg = avg;
-                        minStartPos = i;
+                        minAvg = avg3;
+                        minStartPos = i-2;
                     }
                 }
             }
