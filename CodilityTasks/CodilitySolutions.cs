@@ -12,6 +12,52 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
+        /// A non-empty array A consisting of N integers is given. The consecutive elements of array A represent consecutive cars on a road. Array A contains only 0s and/or 1s:
+        /// <list type="bullet">
+        /// <item>0 represents a car traveling east,</item>
+        /// <item>1 represents a car traveling west.</item>
+        /// </list>
+        /// The goal is to count passing cars.We say that a pair of cars (P, Q), where 0 ≤ P<Q<N, is passing when P is traveling to the east and Q is traveling to the west.
+        /// <example>For example, consider array A such that:
+        /// <list type="table">
+        ///  <item>A[0] = 0</item>
+        ///  <item>A[1] = 1</item>
+        ///  <item>A[2] = 0</item>
+        ///  <item>A[3] = 1</item>
+        ///  <item>A[4] = 1</item></list>
+        /// We have five pairs of passing cars: (0, 1), (0, 3), (0, 4), (2, 3), (2, 4).
+        /// The function should return 5.
+        /// </example>
+        /// Write a function that, given a non-empty array A of N integers, returns the number of pairs of passing cars.
+        /// The function should return −1 if the number of pairs of passing cars exceeds 1,000,000,000.
+        /// 
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[1..100, 000];</item>
+        /// <item>each element of array A is an integer that can have one of the following values: 0, 1.</item>
+        /// </list>
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int PassingCars(int[] A)
+        {
+            int[] prefixSums = new int[A.Length];
+            long passingCars = 0;
+
+            prefixSums[A.Length - 1] = A[A.Length - 1];
+            for (int i = A.Length - 2; i >= 0; i--)
+            {
+                prefixSums[i] = A[i] + prefixSums[i + 1];
+                if (A[i] == 0)
+                {
+                    passingCars += prefixSums[i + 1];
+                }
+            }
+
+            return passingCars <= 1000000000 ? (int)passingCars : -1;
+        }
+
+        /// <summary>
         /// A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
         /// <example>For example, array A such that:
         /// <list type="table">
