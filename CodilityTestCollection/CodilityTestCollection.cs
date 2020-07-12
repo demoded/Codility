@@ -15,6 +15,13 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 2, 1, 1, 2, 3, 1 }, 3)]
+        public void DistinctTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.Distinct(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 0, 1, 0, 1, 1 }, 5)]
         public void PassingCarsTest(int[] A, int expected)
         {

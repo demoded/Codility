@@ -12,6 +12,34 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
+        /// Lesson 6.1 Disitnct (tiny cute oneline solution) :)
+        /// Write a function that, given an array A consisting of N integers, returns the number of distinct values in array A.
+        /// <example>
+        /// For example, given array A consisting of six elements such that:
+        /// <list type="table">
+        /// <item>A[0] = 2</item>
+        /// <item>A[1] = 1</item>
+        /// <item>A[2] = 1</item>
+        /// <item>A[3] = 2</item>
+        /// <item>A[4] = 3</item>
+        /// <item>A[5] = 1</item></list>
+        /// the function should return 3, because there are 3 distinct values appearing in array A, namely 1, 2 and 3.
+        /// </example>
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[0..100, 000];</item>
+        /// <item>each element of array A is an integer within the range[−1, 000, 000..1, 000, 000].</item>
+        /// </list>
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int Distinct(int[] A)
+        {
+            return A.ToList().Distinct().Count();
+        }
+
+
+        /// <summary>
         /// A non-empty array A consisting of N integers is given. The consecutive elements of array A represent consecutive cars on a road. Array A contains only 0s and/or 1s:
         /// <list type="bullet">
         /// <item>0 represents a car traveling east,</item>
