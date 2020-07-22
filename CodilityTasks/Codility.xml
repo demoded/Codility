@@ -9,13 +9,61 @@
             Collection of Codility lessons
             </summary>
         </member>
-        <member name="M:Codility.CodilitySolutions.MinAvgTwoSlice(System.Int32[])">
+        <member name="M:Codility.CodilitySolutions.MaxProductOfThree(System.Int32[])">
             <summary>
-            
+            Lesson 6.2 MaxProductOfThree
+            A non-empty array A consisting of N integers is given. The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P &lt; Q &lt; R &lt; N).
+            <example>For example, array A such that:
+            <list type="table">
+            <item>A[0] = -3</item>
+            <item>A[1] = 1</item>
+            <item>A[2] = 2</item>
+            <item>A[3] = -2</item>
+            <item>A[4] = 5</item>
+            <item>A[5] = 6</item>
+            </list>
+            contains the following example triplets:
+            <list type="bullet">
+            <item>(0, 1, 2), product is −3 * 1 * 2 = −6</item>
+            <item>(1, 2, 4), product is 1 * 2 * 5 = 10</item>
+            <item>(2, 4, 5), product is 2 * 5 * 6 = 60</item>
+            </list>
+            The function should return 60, as the product of triplet (2, 4, 5) is maximal.
+            </example>
+            <list type="bullet">
+            <item>N is an integer within the range [3..100,000];</item>
+            <item>each element of array A is an integer within the range[−1, 000..1, 000].</item>
+            </list>
             </summary>
             <param name="A"></param>
             <returns></returns>
         </member>
+        <member name="M:Codility.CodilitySolutions.Distinct(System.Int32[])">
+            <summary>
+            Lesson 6.1 Disitnct (tiny cute one line solution) :)
+            Write a function that, given an array A consisting of N integers, returns the number of distinct values in array A.
+            <example>
+            For example, given array A consisting of six elements such that:
+            <list type="table">
+            <item>A[0] = 2</item>
+            <item>A[1] = 1</item>
+            <item>A[2] = 1</item>
+            <item>A[3] = 2</item>
+            <item>A[4] = 3</item>
+            <item>A[5] = 1</item></list>
+            the function should return 3, because there are 3 distinct values appearing in array A, namely 1, 2 and 3.
+            </example>
+            Write an efficient algorithm for the following assumptions:
+            <list type="bullet">
+            <item>N is an integer within the range[0..100, 000];</item>
+            <item>each element of array A is an integer within the range[−1, 000, 000..1, 000, 000].</item>
+            </list>
+            </summary>
+            <param name="A"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.PassingCars(System.Int32[])" -->
+        <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.MinAvgTwoSlice(System.Int32[])" -->
         <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.GenomicRangeQuery(System.String,System.Int32[],System.Int32[])" -->
         <member name="M:Codility.CodilitySolutions.CountDiv(System.Int32,System.Int32,System.Int32)">
             <summary>

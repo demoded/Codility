@@ -12,7 +12,49 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
-        /// Lesson 6.1 Disitnct (tiny cute oneline solution) :)
+        /// Lesson 6.2 MaxProductOfThree
+        /// A non-empty array A consisting of N integers is given. The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P &lt; Q &lt; R &lt; N).
+        /// <example>For example, array A such that:
+        /// <list type="table">
+        /// <item>A[0] = -3</item>
+        /// <item>A[1] = 1</item>
+        /// <item>A[2] = 2</item>
+        /// <item>A[3] = -2</item>
+        /// <item>A[4] = 5</item>
+        /// <item>A[5] = 6</item>
+        /// </list>
+        /// contains the following example triplets:
+        /// <list type="bullet">
+        /// <item>(0, 1, 2), product is −3 * 1 * 2 = −6</item>
+        /// <item>(1, 2, 4), product is 1 * 2 * 5 = 10</item>
+        /// <item>(2, 4, 5), product is 2 * 5 * 6 = 60</item>
+        /// </list>
+        /// The function should return 60, as the product of triplet (2, 4, 5) is maximal.
+        /// </example>
+        /// <list type="bullet">
+        /// <item>N is an integer within the range [3..100,000];</item>
+        /// <item>each element of array A is an integer within the range[−1, 000..1, 000].</item>
+        /// </list>
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int MaxProductOfThree(int[] A)
+        {
+            if (A.Length >= 3)
+            {
+                Array.Sort(A);
+
+                int prod1 = A[A.Length - 1] * A[A.Length - 2] * A[A.Length - 3]; //combination of the last 3 numbers
+                int prod2 = A[0] * A[1] * A[A.Length - 1]; //in case there are negative numbers take 2 smallest negative numbers and 1 positive
+
+                return prod1 > prod2 ? prod1 : prod2;
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// Lesson 6.1 Disitnct (tiny cute one line solution) :)
         /// Write a function that, given an array A consisting of N integers, returns the number of distinct values in array A.
         /// <example>
         /// For example, given array A consisting of six elements such that:
