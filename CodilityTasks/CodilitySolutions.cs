@@ -11,6 +11,85 @@ namespace Codility
     /// </summary>
     public class CodilitySolutions
     {
+
+        /// <summary>
+        /// We draw N discs on a plane. The discs are numbered from 0 to N − 1. An array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].
+        /// We say that the J-th disc and K-th disc intersect if J ≠ K and the J-th and K-th discs have at least one common point(assuming that the discs contain their borders).
+        ///
+        /// The figure below shows discs drawn for N = 6 and A as follows:
+        /// <example>
+        /// <list type="table">
+        /// <item>A[0] = 1</item>
+        /// <item>A[1] = 5</item>
+        /// <item>A[2] = 2</item>
+        /// <item>A[3] = 1</item>
+        /// <item>A[4] = 4</item>
+        /// <item>A[5] = 0</item>
+        /// </list>
+        /// https://codility-frontend-prod.s3.amazonaws.com/media/task_static/number_of_disc_intersections/static/images/auto/0eed8918b13a735f4e396c9a87182a38.png
+        /// There are eleven (unordered) pairs of discs that intersect, namely:
+        /// <list type="bullet">
+        /// <item>discs 1 and 4 intersect, and both intersect with all the other discs;</item>
+        /// <item>disc 2 also intersects with discs 0 and 3.</item>
+        /// </list>
+        /// </example>
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[0..100, 000];</item>
+        /// <item>each element of array A is an integer within the range[0..2, 147, 483, 647].</item>
+        /// </list>
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int NumberOfDiscIntersections(int[] A)
+        {
+            const int pairLimit = 10000000;
+            int length = A.Length;
+            int paircount = 0;
+            int openCount = 0;
+            long[] discStart = new long[length];
+            long[] discEnd   = new long[length];
+            int startPos = 0;
+            int endPos = 0;
+
+            //first transform given array of disc radiuses to two arrays of start and end positions
+            for (long i = 0; i < A.Length; i++)
+            {
+                discStart[i] = i - A[i];
+                discEnd[i] = i + A[i];
+            }
+
+            Array.Sort(discStart);
+            Array.Sort(discEnd);
+
+            //while looking through start positions array
+            while (startPos < length)
+            {
+                //check if one of discs closed
+                while (discStart[startPos] > discEnd[endPos])
+                {
+                    openCount--;
+                    endPos++;
+                }
+
+                //sum current paircount and number of open discs
+                //task condition to limit paircount less than 10 000 000
+                if (openCount > 0 && (paircount + openCount) > pairLimit)
+                {
+                    paircount = -1;
+                    break;
+                }
+                else
+                {
+                    paircount += openCount;
+                }
+
+                openCount++;
+                startPos++;
+            }
+
+            return paircount;
+        }
         /// <summary>
         /// Lesson 6.2 MaxProductOfThree
         /// A non-empty array A consisting of N integers is given. The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P &lt; Q &lt; R &lt; N).
@@ -45,7 +124,7 @@ namespace Codility
                 Array.Sort(A);
 
                 int prod1 = A[A.Length - 1] * A[A.Length - 2] * A[A.Length - 3]; //combination of the last 3 numbers
-                int prod2 = A[0] * A[1] * A[A.Length - 1]; //in case there are negative numbers take 2 smallest negative numbers and 1 positive
+                int prod2 = A[0] * A[1] * A[A.Length - 1]; //in case there are negative numbers take 2 smallest negative numbers and 1 largest positive
 
                 return prod1 > prod2 ? prod1 : prod2;
             }
@@ -87,7 +166,7 @@ namespace Codility
         /// <item>0 represents a car traveling east,</item>
         /// <item>1 represents a car traveling west.</item>
         /// </list>
-        /// The goal is to count passing cars.We say that a pair of cars (P, Q), where 0 ≤ P<Q<N, is passing when P is traveling to the east and Q is traveling to the west.
+        /// The goal is to count passing cars.We say that a pair of cars (P, Q), where 0 ≤ P &lt; Q &lt; N, is passing when P is traveling to the east and Q is traveling to the west.
         /// <example>For example, consider array A such that:
         /// <list type="table">
         ///  <item>A[0] = 0</item>
@@ -128,7 +207,7 @@ namespace Codility
         }
 
         /// <summary>
-        /// A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
+        /// A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P &lt; Q &lt; N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
         /// <example>For example, array A such that:
         /// <list type="table">
         /// <item>A[0] = 4</item>
@@ -203,7 +282,7 @@ namespace Codility
 
         /// <summary>
         /// A DNA sequence can be represented as a string consisting of the letters A, C, G and T, which correspond to the types of successive nucleotides in the sequence. Each nucleotide has an impact factor, which is an integer. Nucleotides of types A, C, G and T have impact factors of 1, 2, 3 and 4, respectively. You are going to answer several queries of the form: What is the minimal impact factor of nucleotides contained in a particular part of the given DNA sequence?
-        /// The DNA sequence is given as a non-empty string S = S[0]S[1]...S[N - 1] consisting of N characters.There are M queries, which are given in non-empty arrays P and Q, each consisting of M integers.The K-th query(0 ≤ K<M) requires you to find the minimal impact factor of nucleotides contained in the DNA sequence between positions P[K] and Q[K] (inclusive).
+        /// The DNA sequence is given as a non-empty string S = S[0]S[1]...S[N - 1] consisting of N characters.There are M queries, which are given in non-empty arrays P and Q, each consisting of M integers.The K-th query(0 ≤ K &lt; M) requires you to find the minimal impact factor of nucleotides contained in the DNA sequence between positions P[K] and Q[K] (inclusive).
         /// <example>For example, consider string S = CAGCCTA and arrays P, Q such that:
         /// <list type="table">
         /// <item>P[0] = 2    Q[0] = 4</item>
@@ -224,7 +303,7 @@ namespace Codility
         /// <item>N is an integer within the range[1..100, 000];</item>
         /// <item>M is an integer within the range[1..50, 000];</item>
         /// <item>each element of arrays P, Q is an integer within the range[0..N − 1];</item>
-        /// <item>P[K] ≤ Q[K], where 0 ≤ K<M;</item>
+        /// <item>P[K] ≤ Q[K], where 0 ≤ K &lt; M;</item>
         /// <item>string S consists only of upper-case English letters A, C, G, T.</item></list>
         /// </summary>
         /// <param name="S"></param>

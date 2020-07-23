@@ -15,6 +15,15 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 1, 5, 2, 1, 4, 0 }, 11)]
+        [InlineData(new int[] { 1, 1, 1 }, 3)]
+        [InlineData(new int[] { 1, 2147483647, 0 }, 2)]
+        public void NumberOfDiscIntersectionsTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.NumberOfDiscIntersections(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { -3, 1, 2, -2, 5, 6 }, 60)]
         [InlineData(new int[] { -5, 5, -5, 4 }, 125)]
         public void MaxProductOfThreeTest(int[] A, int expected)
