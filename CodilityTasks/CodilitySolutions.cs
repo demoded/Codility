@@ -74,7 +74,7 @@ namespace Codility
 
                 //sum current paircount and number of open discs
                 //task condition to limit paircount less than 10 000 000
-                if (openCount > 0 && (paircount + openCount) > pairLimit)
+                if ((paircount + openCount) > pairLimit)
                 {
                     paircount = -1;
                     break;
