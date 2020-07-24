@@ -12,6 +12,18 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="S"></param>
+        /// <returns></returns>
+        public int Brackets(String S)
+        {
+
+
+            return 0;
+        }
+
+        /// <summary>
         /// An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P &lt; Q &lt; R &lt; N and:
         /// <list type="bullet">
         /// <item>A[P] + A[Q] > A[R],</item>
