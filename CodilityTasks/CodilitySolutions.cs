@@ -11,6 +11,63 @@ namespace Codility
     /// </summary>
     public class CodilitySolutions
     {
+        /// <summary>
+        /// An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P &lt; Q &lt; R &lt; N and:
+        /// <list type="bullet">
+        /// <item>A[P] + A[Q] > A[R],</item>
+        /// <item>A[Q] + A[R] > A[P],</item>
+        /// <item>A[R] + A[P] > A[Q].</item>
+        /// </list>
+        /// <example>
+        /// For example, consider array A such that:
+        /// <list type="table">
+        /// <item>A[0] = 10</item>
+        /// <item>A[1] = 2</item>
+        /// <item>A[2] = 5</item>
+        /// <item>A[3] = 1</item>
+        /// <item>A[4] = 8</item>
+        /// <item>A[5] = 20</item>
+        /// </list>
+        /// Triplet(0, 2, 4) is triangular. The function should return 1.
+        /// </example>
+        /// <example>
+        /// <list type="table">
+        /// <item>A[0] = 10</item>
+        /// <item>A[1] = 50</item>
+        /// <item>A[2] = 5</item>
+        /// <item>A[3] = 1</item>
+        /// </list>
+        /// the function should return 0.
+        /// </example>
+        /// Write a function that, given an array A consisting of N integers, returns 1 if there exists a triangular triplet for this array and returns 0 otherwise.
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[0..100, 000];</item>
+        /// <item>each element of array A is an integer within the range[−2, 147, 483, 648..2, 147, 483, 647].</item>
+        /// </list>
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int Triangle(int[] A)
+        {
+            // the trick(explanation):
+            // Task condition "0 ≤ P < Q < R < N" only means that P,Q,R couldn't be the same indexes.
+            // It doesn't mean that order of PQR in original array is imprtant. Thus, it's possible po sort array in order to simplify validation and use only 1 loop.
+            // The task related to finding triangles in array of triange edges (edge lenghts). And the order of edges doesn't really matter.
+            if (A.Length >= 3)
+            {
+                Array.Sort(A);
+
+                for (int i = 0; i < A.Length - 2; i++)
+                {
+                    if ((long)A[i] + (long)A[i + 1] > (long)A[i + 2])
+                    {
+                        return 1;
+                    }
+                }
+            }
+            return 0;
+        }
 
         /// <summary>
         /// We draw N discs on a plane. The discs are numbered from 0 to N − 1. An array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].

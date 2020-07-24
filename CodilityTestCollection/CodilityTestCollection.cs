@@ -15,6 +15,13 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 10, 2, 5, 1, 8, 20 }, 1)]
+        public void TriangleTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.Triangle(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 1, 5, 2, 1, 4, 0 }, 11)]
         [InlineData(new int[] { 1, 1, 1 }, 3)]
         [InlineData(new int[] { 1, 2147483647, 0 }, 2)]
