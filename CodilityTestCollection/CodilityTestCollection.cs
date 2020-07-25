@@ -15,6 +15,18 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData("{[()()]}", 1)]
+        [InlineData(")(", 0)]
+        [InlineData("([)()]", 0)]
+        [InlineData("[()}", 0)]
+        [InlineData("(((", 0)]
+        [InlineData("())(()", 0)]
+        public void BracketsTest(String S, int expected)
+        {
+            Assert.Equal(expected, _codility.Brackets(S));
+        }
+
+        [Theory]
         [InlineData(new int[] { 10, 2, 5, 1, 8, 20 }, 1)]
         public void TriangleTest(int[] A, int expected)
         {

@@ -12,15 +12,63 @@ namespace Codility
     public class CodilitySolutions
     {
         /// <summary>
-        /// 
+        /// Lesson 7.1 Brackets
+        /// A string S consisting of N characters is considered to be properly nested if any of the following conditions is true:
+        /// <list type="bullet">
+        /// <item>S is empty;</item>
+        /// <item>S has the form "(U)" or "[U]" or "{U}" where U is a properly nested string;</item>
+        /// <item>S has the form "VW" where V and W are properly nested strings.</item>
+        /// </list>
+        /// Write a function that, given a string S consisting of N characters, returns 1 if S is properly nested and 0 otherwise.
+        /// <example>
+        /// For example, given S = "{[()()]}", the function should return 1 and given S = "([)()]", the function should return 0, as explained above.
+        /// </example>
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[0..200, 000];</item>
+        /// <item>string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".</item>
+        /// </list>
         /// </summary>
         /// <param name="S"></param>
         /// <returns></returns>
         public int Brackets(String S)
         {
+            Stack<char> bracketStack = new Stack<char>();
 
+            if (S.Length == 0) return 1;
+            if (S.Length % 2 == 1) return 0;
 
-            return 0;
+            bracketStack.Push(S[0]);
+
+            for (int i = 1; i < S.Length; i++)
+            {
+                if (S[i] == '(' || S[i] == '[' || S[i] == '{')
+                {
+                    bracketStack.Push(S[i]);
+                }
+                else if (bracketStack.Count > 0)
+                {
+                    if ((S[i] == ')' && bracketStack.Peek() == '(') ||
+                        (S[i] == ']' && bracketStack.Peek() == '[') ||
+                        (S[i] == '}' && bracketStack.Peek() == '{'))
+                    {
+                        bracketStack.Pop();
+                    }
+                    else
+                    {
+                        //wrong closing bracket found
+                        return 0;
+                    }
+                }
+                else
+                {
+                    //closing bracket found without opening
+                    return 0;
+                }
+
+            }
+
+            return (bracketStack.Count == 0) ? 1 : 0;
         }
 
         /// <summary>
