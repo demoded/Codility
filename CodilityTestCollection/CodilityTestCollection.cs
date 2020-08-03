@@ -15,6 +15,32 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 0, 1, 0, 0, 0 }, 2)]
+        [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 0, 0, 0, 0, 1 }, 5)]
+        [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 1, 0, 1, 0, 1 },  3)]
+        [InlineData(new int[] { 4, 3, 2, 0, 5 }, new int[] { 0, 1, 0, 0, 0 },  2)]
+        [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 0, 1, 1, 0, 0 },  2)]
+        [InlineData(new int[] { 4, 3, 2, 5, 6 }, new int[] { 1, 0, 1, 0, 1 },  2)]
+        [InlineData(new int[] { 7, 4, 3, 2, 5, 6 }, new int[] { 0, 1, 1, 1, 0, 1 },  3)]
+        [InlineData(new int[] { 3, 4, 2, 1, 5 }, new int[] { 1, 0, 0, 0, 0 },  4)]
+        [InlineData(new int[] { 1, 2, 3, 4, 5 }, new int[] { 1, 1, 1, 1, 0 }, 1)]
+        [InlineData(new int[] { 0, 1 }, new int[] { 1, 1 }, 2)]
+        [InlineData(new int[] { 0, 1 }, new int[] { 0, 1 }, 2)]
+        [InlineData(new int[] { 0, 1 }, new int[] { 0, 0 }, 2)]
+        [InlineData(new int[] { 0, 1 }, new int[] { 1, 0 }, 1)]
+        [InlineData(new int[] { 1, 0 }, new int[] { 0, 0 }, 2)]
+        [InlineData(new int[] { 1, 0 }, new int[] { 0, 1 }, 2)]
+        [InlineData(new int[] { 1, 0 }, new int[] { 1, 0 }, 1)]
+        [InlineData(new int[] { 1, 0 }, new int[] { 1, 1 }, 2)]
+        [InlineData(new int[] { 0 }, new int[] { 0 }, 1)]
+        [InlineData(new int[] { 0 }, new int[] { 1 }, 1)]
+        [InlineData(new int[] { 1 }, new int[] { 1 }, 1)]
+        public void FishTest(int[] A, int[] B, int expected)
+        {
+            Assert.Equal(expected, _codility.Fish(A, B));
+        }
+
+        [Theory]
         [InlineData("{[()()]}", 1)]
         [InlineData(")(", 0)]
         [InlineData("([)()]", 0)]
