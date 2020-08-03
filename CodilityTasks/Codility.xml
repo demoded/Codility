@@ -4,151 +4,298 @@
         <name>Codility</name>
     </assembly>
     <members>
-        <member name="T:Codility.CodilitySolutions">
-            <summary>
-            Collection of Codility lessons
+        <member name="M:Codility.CodilitySolutions.BinaryGap_solution(System.Int32)">
+             <summary>
+             A binary gap within a positive integer N is any maximal sequence of consecutive zeros 
+             that is surrounded by ones at both ends in the binary representation of N.
+            <example>For example:<list type="table">
+            <item>number 1040 has binary representation 10000010001 and so its longest binary gap is of length 5</item>
+            <item>number 9 has binary representation 1001 and contains a binary gap of length 2</item>
+            <item>number 529 has binary representation 1000010001 and contains two binary gaps: one of length 4 and one of length 3</item>
+            <item>number 20 has binary representation 10100 and contains one binary gap of length 1</item>
+            <item>number 15 has binary representation 1111 and has no binary gaps</item>
+            <item>number 32 has binary representation 100000 and has no binary gaps</item>
+            </list></example>
+             Write a function that, given a positive integer N, returns the length of its longest binary gap.
+             The function should return 0 if N doesn't contain a binary gap.
+             Write an efficient algorithm for the following assumptions:
+             N is an integer within the range[1..2, 147, 483, 647].
             </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.Fish(System.Int32[],System.Int32[])" -->
-        <member name="M:Codility.CodilitySolutions.Brackets(System.String)">
-            <summary>
-            Lesson 7.1 Brackets
-            A string S consisting of N characters is considered to be properly nested if any of the following conditions is true:
-            <list type="bullet">
-            <item>S is empty;</item>
-            <item>S has the form "(U)" or "[U]" or "{U}" where U is a properly nested string;</item>
-            <item>S has the form "VW" where V and W are properly nested strings.</item>
-            </list>
-            Write a function that, given a string S consisting of N characters, returns 1 if S is properly nested and 0 otherwise.
-            <example>
-            For example, given S = "{[()()]}", the function should return 1 and given S = "([)()]", the function should return 0, as explained above.
-            </example>
-            Write an efficient algorithm for the following assumptions:
-            <list type="bullet">
-            <item>N is an integer within the range[0..200, 000];</item>
-            <item>string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".</item>
-            </list>
-            </summary>
-            <param name="S"></param>
+            <param name="N"></param>
             <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.Triangle(System.Int32[])">
+        <member name="M:Codility.CodilitySolutions.OddOccurrencesInArray_solution(System.Int32[])">
             <summary>
-            An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P &lt; Q &lt; R &lt; N and:
-            <list type="bullet">
-            <item>A[P] + A[Q] > A[R],</item>
-            <item>A[Q] + A[R] > A[P],</item>
-            <item>A[R] + A[P] > A[Q].</item>
-            </list>
+            A non-empty array A consisting of N integers is given.
+            The array contains an odd number of elements,
+            and each element of the array can be paired with another element that has the same value,
+            except for one element that is left unpaired.
             <example>
-            For example, consider array A such that:
+            For example, in array A such that { 9, 3, 9, 3, 9, 7, 9 }
             <list type="table">
-            <item>A[0] = 10</item>
-            <item>A[1] = 2</item>
-            <item>A[2] = 5</item>
-            <item>A[3] = 1</item>
-            <item>A[4] = 8</item>
-            <item>A[5] = 20</item>
+            <item>the elements at indexes 0 and 2 have value 9,</item>
+            <item>the elements at indexes 1 and 3 have value 3,</item>
+            <item>the elements at indexes 4 and 6 have value 9,</item>
+            <item>the element at index 5 has value 7 and is unpaired.</item>
             </list>
-            Triplet(0, 2, 4) is triangular. The function should return 1.
             </example>
-            <example>
-            <list type="table">
-            <item>A[0] = 10</item>
-            <item>A[1] = 50</item>
-            <item>A[2] = 5</item>
-            <item>A[3] = 1</item>
-            </list>
-            the function should return 0.
-            </example>
-            Write a function that, given an array A consisting of N integers, returns 1 if there exists a triangular triplet for this array and returns 0 otherwise.
+            Write a function: that, given an array A consisting of N integers fulfilling the above conditions, returns the value of the unpaired element.
             Write an efficient algorithm for the following assumptions:
-            <list type="bullet">
-            <item>N is an integer within the range[0..100, 000];</item>
-            <item>each element of array A is an integer within the range[−2, 147, 483, 648..2, 147, 483, 647].</item>
+            <list type="table">
+            N is an odd integer within the range [1..1,000,000];
+            <item>each element of array A is an integer within the range[1..1, 000, 000, 000];</item>
+            <item>all but one of the values in A occur an even number of times.</item>
             </list>
             </summary>
             <param name="A"></param>
             <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.NumberOfDiscIntersections(System.Int32[])">
+        <member name="M:Codility.CodilitySolutions.CyclicRotation_solution(System.Int32[],System.Int32)">
              <summary>
-             We draw N discs on a plane. The discs are numbered from 0 to N − 1. An array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].
-             We say that the J-th disc and K-th disc intersect if J ≠ K and the J-th and K-th discs have at least one common point(assuming that the discs contain their borders).
-            
-             The figure below shows discs drawn for N = 6 and A as follows:
-             <example>
+             An array A consisting of N integers is given.
+             Rotation of the array means that each element is shifted right by one index, 
+             and the last element of the array is moved to the first place.
+             The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.
+             Write a function that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
+            <example>
+             For example:
              <list type="table">
-             <item>A[0] = 1</item>
-             <item>A[1] = 5</item>
-             <item>A[2] = 2</item>
-             <item>A[3] = 1</item>
-             <item>A[4] = 4</item>
-             <item>A[5] = 0</item>
+             <item>A = [3, 8, 9, 7, 6]</item>
+             <item>K = 3</item>
+             <item>the function should return [9, 7, 6, 3, 8]. </item>
+             <item>Three rotations were made:</item>
+             <item>[3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]</item>
+             <item>[6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]</item>
+             <item>[7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]</item>
+            </list>
+            <list type="table">
+             A = [0, 0, 0]
+             K = 1
+             return [0, 0, 0]
+            </list>
+            <list type="table">
+             A = [1, 2, 3, 4]
+             K = 4
+             return [1, 2, 3, 4]
              </list>
-             https://codility-frontend-prod.s3.amazonaws.com/media/task_static/number_of_disc_intersections/static/images/auto/0eed8918b13a735f4e396c9a87182a38.png
-             There are eleven (unordered) pairs of discs that intersect, namely:
-             <list type="bullet">
-             <item>discs 1 and 4 intersect, and both intersect with all the other discs;</item>
-             <item>disc 2 also intersects with discs 0 and 3.</item>
-             </list>
-             </example>
+            </example> 
+            Assume that:
+            <list type="table">
+            <item>N and K are integers within the range [0..100];</item>
+            <item>each element of array A is an integer within the range[−1, 000..1, 000].</item>
+            <item>In your solution, focus on correctness.The performance of your solution will not be the focus of the assessment.</item>
+            </list>
+             </summary>
+             <param name="A">source array</param>
+             <param name="K">number of steps to rotate</param>
+             <returns></returns>
+        </member>
+        <member name="M:Codility.CodilitySolutions.TapeEquilibrium_solution(System.Int32[])">
+            <summary>
+            A non-empty array A consisting of N integers is given. Array A represents numbers on a tape.
+            Any integer P, such that 0 &lt; P&lt;N, splits this tape into two non-empty parts: 
+            A[0], A[1], ..., A[P − 1] and A[P], A[P + 1], ..., A[N − 1].
+            The difference between the two parts is the value of: |(A[0] + A[1] + ... + A[P − 1]) − (A[P] + A[P + 1] + ... + A[N − 1])|
+            In other words, it is the absolute difference between the sum of the first part and the sum of the second part.
+            <example>
+            For example, consider array A such that:
+            <code><list type="table">
+            <item> A[0] = 3</item>
+            <item> A[1] = 1</item>
+            <item> A[2] = 2</item>
+            <item> A[3] = 4</item>
+            <item> A[4] = 3</item>
+            </list></code>
+            We can split this tape in four places:
+            <code><list type="table">
+            <item>P = 1, difference = | 3 − 10| = 7</item>
+            <item>P = 2, difference = | 4 − 9| = 5</item>
+            <item>P = 3, difference = | 6 − 7| = 1</item>
+            <item>P = 4, difference = | 10 − 3| = 7</item>
+            </list></code>
+            the function should return 1, as explained above.
+            </example>
+            Write a function:
+            <code>class Solution { public int solution(int[] A); }</code>
+            that, given a non-empty array A of N integers, returns the minimal difference that can be achieved.
+            Write an efficient algorithm for the following assumptions:
+            N is an integer within the range[2..100, 000];
+            each element of array A is an integer within the range[−1, 000..1, 000].
+            </summary>
+            <param name="A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Codility.CodilitySolutions.PermMissingElem_solution(System.Int32[])">
+            <summary>
+            An array A consisting of N different integers is given. 
+            The array contains integers in the range[1..(N + 1)], which means that exactly one element is missing.
+            Your goal is to find that missing element.
+            Write a function: that, given an array A, returns the value of the missing element.
+            <example>
+            For example, given array A { 2, 3, 1, 5}
+            the function should return 4, as it is the missing element.
+            </example>
+            Write an efficient algorithm for the following assumptions:
+            N is an integer within the range[0..100, 000];
+            the elements of A are all distinct;
+            each element of array A is an integer within the range[1..(N + 1)]. 
+            </summary>
+            <param name="A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Codility.CodilitySolutions.FrogJump_solution(System.Int32,System.Int32,System.Int32)">
+             <summary>
+             A small frog wants to get to the other side of the road.
+             The frog is currently located at position X and wants to get to a position greater than or equal to Y.
+             The small frog always jumps a fixed distance, D.
+             Count the minimal number of jumps that the small frog must perform to reach its target.
+            
+             Write a function: that, given three integers X, Y and D, 
+             returns the minimal number of jumps from position X to a position equal to or greater than Y.
+            
+             <example>
+             For example, given:
+            <code><list type="table">
+             <item>X = 10</item>
+             <item>Y = 85</item>
+             <item>D = 30</item>
+            </list></code>
+             the function should return 3, because the frog will be positioned as follows:
+            <list type="">
+            <item>after the first jump, at position 10 + 30 = 40</item>
+            <item>after the second jump, at position 10 + 30 + 30 = 70</item>
+            <item>after the third jump, at position 10 + 30 + 30 + 30 = 100</item>
+            </list>
+            </example>
              Write an efficient algorithm for the following assumptions:
-             <list type="bullet">
-             <item>N is an integer within the range[0..100, 000];</item>
-             <item>each element of array A is an integer within the range[0..2, 147, 483, 647].</item>
+             <list type="table">
+            <item>X, Y and D are integers within the range[1..1, 000, 000, 000];</item>
+            <item>X ≤ Y.</item>
              </list>
+             </summary>
+             <param name="X">currently located at position</param>
+             <param name="Y">goal position</param>
+             <param name="D">jump distance</param>
+             <returns></returns>
+        </member>
+        <member name="M:Codility.CodilitySolutions.PermCheck(System.Int32[])">
+             <summary>
+             A permutation is a sequence containing each element from 1 to N once, and only once.
+             <example>For example, array A such that:
+             <list type="table">   
+             <item>A[0] = 4</item>
+             <item>A[1] = 1</item>
+             <item>A[2] = 3</item>
+             <item>A[3] = 2</item></list>
+             is a permutation, 
+             but array A such that:
+             <list type="table">
+             <item>A[0] = 4</item>
+             <item>A[1] = 1</item>
+             <item>A[2] = 3</item></list>
+             is not a permutation, because value 2 is missing.
+            </example>
+             The goal is to check whether array A is a permutation. 
+             Write a function that, given an array A, returns 1 if array A is a permutation and 0 if it is not.
              </summary>
              <param name="A"></param>
              <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.MaxProductOfThree(System.Int32[])">
+        <member name="M:Codility.CodilitySolutions.MaxCounters(System.Int32,System.Int32[])">
             <summary>
-            Lesson 6.2 MaxProductOfThree
-            A non-empty array A consisting of N integers is given. The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P &lt; Q &lt; R &lt; N).
-            <example>For example, array A such that:
-            <list type="table">
-            <item>A[0] = -3</item>
-            <item>A[1] = 1</item>
-            <item>A[2] = 2</item>
-            <item>A[3] = -2</item>
-            <item>A[4] = 5</item>
-            <item>A[5] = 6</item>
-            </list>
-            contains the following example triplets:
+            You are given N counters, initially set to 0, and you have two possible operations on them:
             <list type="bullet">
-            <item>(0, 1, 2), product is −3 * 1 * 2 = −6</item>
-            <item>(1, 2, 4), product is 1 * 2 * 5 = 10</item>
-            <item>(2, 4, 5), product is 2 * 5 * 6 = 60</item>
-            </list>
-            The function should return 60, as the product of triplet (2, 4, 5) is maximal.
-            </example>
-            <list type="bullet">
-            <item>N is an integer within the range [3..100,000];</item>
-            <item>each element of array A is an integer within the range[−1, 000..1, 000].</item>
-            </list>
+            <item>increase(X) − counter X is increased by 1,</item>
+            <item>max counter − all counters are set to the maximum value of any counter.</item></list>
+            A non-empty array A of M integers is given. This array represents consecutive operations:
+            <code><list type="table">
+            <item>if A[K] = X, such that 1 ≤ X ≤ N, then operation K is increase(X),</item>
+            <item>if A[K] = N + 1 then operation K is max counter.</item>
+            </list></code>
+            <example>For example, given integer N = 5 and array A such that:
+            <code>
+                A[0] = 3
+                A[1] = 4
+                A[2] = 4
+                A[3] = 6
+                A[4] = 1
+                A[5] = 4
+                A[6] = 4
+            </code>
+            the values of the counters after each consecutive operation will be:
+            <code>
+                (0, 0, 1, 0, 0)
+                (0, 0, 1, 1, 0)
+                (0, 0, 1, 2, 0)
+                (2, 2, 2, 2, 2)
+                (3, 2, 2, 2, 2)
+                (3, 2, 2, 3, 2)
+                (3, 2, 2, 4, 2)
+            </code>
+            the function should return [3, 2, 2, 4, 2], as explained above.
+            </example> 
+            The goal is to calculate the value of every counter after all operations.
+            Write a function that, given an integer N and a non-empty array A consisting of M integers, 
+            returns a sequence of integers representing the values of the counters.
+            
+            Write an efficient algorithm for the following assumptions:
+            N and M are integers within the range [1..100,000];
+            each element of array A is an integer within the range [1..N + 1].
             </summary>
+            <param name="N"></param>
             <param name="A"></param>
             <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.Distinct(System.Int32[])">
+        <member name="M:Codility.CodilitySolutions.FrogRiverOne_solution(System.Int32,System.Int32[])">
             <summary>
-            Lesson 6.1 Disitnct (tiny cute one line solution) :)
-            Write a function that, given an array A consisting of N integers, returns the number of distinct values in array A.
-            <example>
-            For example, given array A consisting of six elements such that:
-            <list type="table">
-            <item>A[0] = 2</item>
-            <item>A[1] = 1</item>
+            A small frog wants to get to the other side of a river.
+            The frog is initially located on one bank of the river(position 0) 
+            and wants to get to the opposite bank(position X+1). 
+            Leaves fall from a tree onto the surface of the river.
+            You are given an array A consisting of N integers representing the falling leaves.
+            A[K] represents the position where one leaf falls at time K, measured in seconds.
+            The goal is to find the earliest time when the frog can jump to the other side of the river.
+            The frog can cross only when leaves appear at every position across the river from 1 to X 
+            (that is, we want to find the earliest moment when all the positions from 1 to X are covered by leaves).
+            You may assume that the speed of the current in the river is negligibly small, 
+            i.e.the leaves do not change their positions once they fall in the river.
+            <example>For example, you are given integer X = 5 and array A such that:<list type="table">
+            <item>A[0] = 1</item>
+            <item>A[1] = 3</item>
             <item>A[2] = 1</item>
-            <item>A[3] = 2</item>
-            <item>A[4] = 3</item>
-            <item>A[5] = 1</item></list>
-            the function should return 3, because there are 3 distinct values appearing in array A, namely 1, 2 and 3.
+            <item>A[3] = 4</item>
+            <item>A[4] = 2</item>
+            <item>A[5] = 3</item>
+            <item>A[6] = 5</item>
+            <item>A[7] = 4</item></list>
+            In second 6, a leaf falls into position 5. This is the earliest time when leaves appear in every position across the river.
+            The function should return 6, as explained above.
             </example>
+            Write a function: <code>class Solution { public int solution(int X, int[] A); }</code>
+            that, given a non-empty array A consisting of N integers and integer X, 
+            returns the earliest time when the frog can jump to the other side of the river.
+            If the frog is never able to jump to the other side of the river, the function should return −1.
+            
+            Write an efficient algorithm for the following assumptions:<list type="table">
+            <item>N and X are integers within the range[1..100, 000];</item>
+            <item>each element of array A is an integer within the range[1..X].</item></list>
+            </summary>
+            <param name="X"></param>
+            <param name="A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Codility.CodilitySolutions.MissingInteger_solution(System.Int32[])">
+             <summary>
+             Write a function that, given an array A of N integers, 
+             returns the smallest positive integer(greater than 0) that does not occur in A.
+            <example>For example: <list type="table">
+            <item>Given A = [1, 3, 6, 4, 1, 2], the function should return 5.</item>
+            <item>Given A = [1, 2, 3], the function should return 4.</item>
+            <item>Given A = [−1, −3], the function should return 1.</item>
+            </list></example>
             Write an efficient algorithm for the following assumptions:
-            <list type="bullet">
-            <item>N is an integer within the range[0..100, 000];</item>
+            <list type="table">
+            <item>N is an integer within the range[1..100, 000];</item>
             <item>each element of array A is an integer within the range[−1, 000, 000..1, 000, 000].</item>
             </list>
             </summary>
@@ -278,302 +425,150 @@
             <param name="K"></param>
             <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.PermCheck(System.Int32[])">
-             <summary>
-             A permutation is a sequence containing each element from 1 to N once, and only once.
-             <example>For example, array A such that:
-             <list type="table">   
-             <item>A[0] = 4</item>
-             <item>A[1] = 1</item>
-             <item>A[2] = 3</item>
-             <item>A[3] = 2</item></list>
-             is a permutation, 
-             but array A such that:
-             <list type="table">
-             <item>A[0] = 4</item>
-             <item>A[1] = 1</item>
-             <item>A[2] = 3</item></list>
-             is not a permutation, because value 2 is missing.
+        <member name="M:Codility.CodilitySolutions.Triangle(System.Int32[])">
+            <summary>
+            An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P &lt; Q &lt; R &lt; N and:
+            <list type="bullet">
+            <item>A[P] + A[Q] > A[R],</item>
+            <item>A[Q] + A[R] > A[P],</item>
+            <item>A[R] + A[P] > A[Q].</item>
+            </list>
+            <example>
+            For example, consider array A such that:
+            <list type="table">
+            <item>A[0] = 10</item>
+            <item>A[1] = 2</item>
+            <item>A[2] = 5</item>
+            <item>A[3] = 1</item>
+            <item>A[4] = 8</item>
+            <item>A[5] = 20</item>
+            </list>
+            Triplet(0, 2, 4) is triangular. The function should return 1.
             </example>
-             The goal is to check whether array A is a permutation. 
-             Write a function that, given an array A, returns 1 if array A is a permutation and 0 if it is not.
+            <example>
+            <list type="table">
+            <item>A[0] = 10</item>
+            <item>A[1] = 50</item>
+            <item>A[2] = 5</item>
+            <item>A[3] = 1</item>
+            </list>
+            the function should return 0.
+            </example>
+            Write a function that, given an array A consisting of N integers, returns 1 if there exists a triangular triplet for this array and returns 0 otherwise.
+            Write an efficient algorithm for the following assumptions:
+            <list type="bullet">
+            <item>N is an integer within the range[0..100, 000];</item>
+            <item>each element of array A is an integer within the range[−2, 147, 483, 648..2, 147, 483, 647].</item>
+            </list>
+            </summary>
+            <param name="A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Codility.CodilitySolutions.NumberOfDiscIntersections(System.Int32[])">
+             <summary>
+             We draw N discs on a plane. The discs are numbered from 0 to N − 1. An array A of N non-negative integers, specifying the radiuses of the discs, is given. The J-th disc is drawn with its center at (J, 0) and radius A[J].
+             We say that the J-th disc and K-th disc intersect if J ≠ K and the J-th and K-th discs have at least one common point(assuming that the discs contain their borders).
+            
+             The figure below shows discs drawn for N = 6 and A as follows:
+             <example>
+             <list type="table">
+             <item>A[0] = 1</item>
+             <item>A[1] = 5</item>
+             <item>A[2] = 2</item>
+             <item>A[3] = 1</item>
+             <item>A[4] = 4</item>
+             <item>A[5] = 0</item>
+             </list>
+             https://codility-frontend-prod.s3.amazonaws.com/media/task_static/number_of_disc_intersections/static/images/auto/0eed8918b13a735f4e396c9a87182a38.png
+             There are eleven (unordered) pairs of discs that intersect, namely:
+             <list type="bullet">
+             <item>discs 1 and 4 intersect, and both intersect with all the other discs;</item>
+             <item>disc 2 also intersects with discs 0 and 3.</item>
+             </list>
+             </example>
+             Write an efficient algorithm for the following assumptions:
+             <list type="bullet">
+             <item>N is an integer within the range[0..100, 000];</item>
+             <item>each element of array A is an integer within the range[0..2, 147, 483, 647].</item>
+             </list>
              </summary>
              <param name="A"></param>
              <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.MaxCounters(System.Int32,System.Int32[])">
+        <member name="M:Codility.CodilitySolutions.MaxProductOfThree(System.Int32[])">
             <summary>
-            You are given N counters, initially set to 0, and you have two possible operations on them:
+            Lesson 6.2 MaxProductOfThree
+            A non-empty array A consisting of N integers is given. The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P &lt; Q &lt; R &lt; N).
+            <example>For example, array A such that:
+            <list type="table">
+            <item>A[0] = -3</item>
+            <item>A[1] = 1</item>
+            <item>A[2] = 2</item>
+            <item>A[3] = -2</item>
+            <item>A[4] = 5</item>
+            <item>A[5] = 6</item>
+            </list>
+            contains the following example triplets:
             <list type="bullet">
-            <item>increase(X) − counter X is increased by 1,</item>
-            <item>max counter − all counters are set to the maximum value of any counter.</item></list>
-            A non-empty array A of M integers is given. This array represents consecutive operations:
-            <code><list type="table">
-            <item>if A[K] = X, such that 1 ≤ X ≤ N, then operation K is increase(X),</item>
-            <item>if A[K] = N + 1 then operation K is max counter.</item>
-            </list></code>
-            <example>For example, given integer N = 5 and array A such that:
-            <code>
-                A[0] = 3
-                A[1] = 4
-                A[2] = 4
-                A[3] = 6
-                A[4] = 1
-                A[5] = 4
-                A[6] = 4
-            </code>
-            the values of the counters after each consecutive operation will be:
-            <code>
-                (0, 0, 1, 0, 0)
-                (0, 0, 1, 1, 0)
-                (0, 0, 1, 2, 0)
-                (2, 2, 2, 2, 2)
-                (3, 2, 2, 2, 2)
-                (3, 2, 2, 3, 2)
-                (3, 2, 2, 4, 2)
-            </code>
-            the function should return [3, 2, 2, 4, 2], as explained above.
-            </example> 
-            The goal is to calculate the value of every counter after all operations.
-            Write a function that, given an integer N and a non-empty array A consisting of M integers, 
-            returns a sequence of integers representing the values of the counters.
-            
-            Write an efficient algorithm for the following assumptions:
-            N and M are integers within the range [1..100,000];
-            each element of array A is an integer within the range [1..N + 1].
-            </summary>
-            <param name="N"></param>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.FrogRiverOne_solution(System.Int32,System.Int32[])">
-            <summary>
-            A small frog wants to get to the other side of a river.
-            The frog is initially located on one bank of the river(position 0) 
-            and wants to get to the opposite bank(position X+1). 
-            Leaves fall from a tree onto the surface of the river.
-            You are given an array A consisting of N integers representing the falling leaves.
-            A[K] represents the position where one leaf falls at time K, measured in seconds.
-            The goal is to find the earliest time when the frog can jump to the other side of the river.
-            The frog can cross only when leaves appear at every position across the river from 1 to X 
-            (that is, we want to find the earliest moment when all the positions from 1 to X are covered by leaves).
-            You may assume that the speed of the current in the river is negligibly small, 
-            i.e.the leaves do not change their positions once they fall in the river.
-            <example>For example, you are given integer X = 5 and array A such that:<list type="table">
-            <item>A[0] = 1</item>
-            <item>A[1] = 3</item>
-            <item>A[2] = 1</item>
-            <item>A[3] = 4</item>
-            <item>A[4] = 2</item>
-            <item>A[5] = 3</item>
-            <item>A[6] = 5</item>
-            <item>A[7] = 4</item></list>
-            In second 6, a leaf falls into position 5. This is the earliest time when leaves appear in every position across the river.
-            The function should return 6, as explained above.
-            </example>
-            Write a function: <code>class Solution { public int solution(int X, int[] A); }</code>
-            that, given a non-empty array A consisting of N integers and integer X, 
-            returns the earliest time when the frog can jump to the other side of the river.
-            If the frog is never able to jump to the other side of the river, the function should return −1.
-            
-            Write an efficient algorithm for the following assumptions:<list type="table">
-            <item>N and X are integers within the range[1..100, 000];</item>
-            <item>each element of array A is an integer within the range[1..X].</item></list>
-            </summary>
-            <param name="X"></param>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.TapeEquilibrium_solution(System.Int32[])">
-            <summary>
-            A non-empty array A consisting of N integers is given. Array A represents numbers on a tape.
-            Any integer P, such that 0 &lt; P&lt;N, splits this tape into two non-empty parts: 
-            A[0], A[1], ..., A[P − 1] and A[P], A[P + 1], ..., A[N − 1].
-            The difference between the two parts is the value of: |(A[0] + A[1] + ... + A[P − 1]) − (A[P] + A[P + 1] + ... + A[N − 1])|
-            In other words, it is the absolute difference between the sum of the first part and the sum of the second part.
-            <example>
-            For example, consider array A such that:
-            <code><list type="table">
-            <item> A[0] = 3</item>
-            <item> A[1] = 1</item>
-            <item> A[2] = 2</item>
-            <item> A[3] = 4</item>
-            <item> A[4] = 3</item>
-            </list></code>
-            We can split this tape in four places:
-            <code><list type="table">
-            <item>P = 1, difference = | 3 − 10| = 7</item>
-            <item>P = 2, difference = | 4 − 9| = 5</item>
-            <item>P = 3, difference = | 6 − 7| = 1</item>
-            <item>P = 4, difference = | 10 − 3| = 7</item>
-            </list></code>
-            the function should return 1, as explained above.
-            </example>
-            Write a function:
-            <code>class Solution { public int solution(int[] A); }</code>
-            that, given a non-empty array A of N integers, returns the minimal difference that can be achieved.
-            Write an efficient algorithm for the following assumptions:
-            N is an integer within the range[2..100, 000];
-            each element of array A is an integer within the range[−1, 000..1, 000].
-            </summary>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.PermMissingElem_solution(System.Int32[])">
-            <summary>
-            An array A consisting of N different integers is given. 
-            The array contains integers in the range[1..(N + 1)], which means that exactly one element is missing.
-            Your goal is to find that missing element.
-            Write a function: that, given an array A, returns the value of the missing element.
-            <example>
-            For example, given array A { 2, 3, 1, 5}
-            the function should return 4, as it is the missing element.
-            </example>
-            Write an efficient algorithm for the following assumptions:
-            N is an integer within the range[0..100, 000];
-            the elements of A are all distinct;
-            each element of array A is an integer within the range[1..(N + 1)]. 
-            </summary>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.FrogJump_solution(System.Int32,System.Int32,System.Int32)">
-             <summary>
-             A small frog wants to get to the other side of the road.
-             The frog is currently located at position X and wants to get to a position greater than or equal to Y.
-             The small frog always jumps a fixed distance, D.
-             Count the minimal number of jumps that the small frog must perform to reach its target.
-            
-             Write a function: that, given three integers X, Y and D, 
-             returns the minimal number of jumps from position X to a position equal to or greater than Y.
-            
-             <example>
-             For example, given:
-            <code><list type="table">
-             <item>X = 10</item>
-             <item>Y = 85</item>
-             <item>D = 30</item>
-            </list></code>
-             the function should return 3, because the frog will be positioned as follows:
-            <list type="">
-            <item>after the first jump, at position 10 + 30 = 40</item>
-            <item>after the second jump, at position 10 + 30 + 30 = 70</item>
-            <item>after the third jump, at position 10 + 30 + 30 + 30 = 100</item>
+            <item>(0, 1, 2), product is −3 * 1 * 2 = −6</item>
+            <item>(1, 2, 4), product is 1 * 2 * 5 = 10</item>
+            <item>(2, 4, 5), product is 2 * 5 * 6 = 60</item>
             </list>
+            The function should return 60, as the product of triplet (2, 4, 5) is maximal.
             </example>
-             Write an efficient algorithm for the following assumptions:
-             <list type="table">
-            <item>X, Y and D are integers within the range[1..1, 000, 000, 000];</item>
-            <item>X ≤ Y.</item>
-             </list>
-             </summary>
-             <param name="X">currently located at position</param>
-             <param name="Y">goal position</param>
-             <param name="D">jump distance</param>
-             <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.OddOccurrencesInArray_solution(System.Int32[])">
-            <summary>
-            A non-empty array A consisting of N integers is given.
-            The array contains an odd number of elements,
-            and each element of the array can be paired with another element that has the same value,
-            except for one element that is left unpaired.
-            <example>
-            For example, in array A such that { 9, 3, 9, 3, 9, 7, 9 }
-            <list type="table">
-            <item>the elements at indexes 0 and 2 have value 9,</item>
-            <item>the elements at indexes 1 and 3 have value 3,</item>
-            <item>the elements at indexes 4 and 6 have value 9,</item>
-            <item>the element at index 5 has value 7 and is unpaired.</item>
-            </list>
-            </example>
-            Write a function: that, given an array A consisting of N integers fulfilling the above conditions, returns the value of the unpaired element.
-            Write an efficient algorithm for the following assumptions:
-            <list type="table">
-            N is an odd integer within the range [1..1,000,000];
-            <item>each element of array A is an integer within the range[1..1, 000, 000, 000];</item>
-            <item>all but one of the values in A occur an even number of times.</item>
-            </list>
-            </summary>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.CyclicRotation_solution(System.Int32[],System.Int32)">
-             <summary>
-             An array A consisting of N integers is given.
-             Rotation of the array means that each element is shifted right by one index, 
-             and the last element of the array is moved to the first place.
-             The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.
-             Write a function that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
-            <example>
-             For example:
-             <list type="table">
-             <item>A = [3, 8, 9, 7, 6]</item>
-             <item>K = 3</item>
-             <item>the function should return [9, 7, 6, 3, 8]. </item>
-             <item>Three rotations were made:</item>
-             <item>[3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]</item>
-             <item>[6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]</item>
-             <item>[7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]</item>
-            </list>
-            <list type="table">
-             A = [0, 0, 0]
-             K = 1
-             return [0, 0, 0]
-            </list>
-            <list type="table">
-             A = [1, 2, 3, 4]
-             K = 4
-             return [1, 2, 3, 4]
-             </list>
-            </example> 
-            Assume that:
-            <list type="table">
-            <item>N and K are integers within the range [0..100];</item>
+            <list type="bullet">
+            <item>N is an integer within the range [3..100,000];</item>
             <item>each element of array A is an integer within the range[−1, 000..1, 000].</item>
-            <item>In your solution, focus on correctness.The performance of your solution will not be the focus of the assessment.</item>
             </list>
-             </summary>
-             <param name="A">source array</param>
-             <param name="K">number of steps to rotate</param>
-             <returns></returns>
-        </member>
-        <member name="M:Codility.CodilitySolutions.BinaryGap_solution(System.Int32)">
-             <summary>
-             A binary gap within a positive integer N is any maximal sequence of consecutive zeros 
-             that is surrounded by ones at both ends in the binary representation of N.
-            <example>For example:<list type="table">
-            <item>number 1040 has binary representation 10000010001 and so its longest binary gap is of length 5</item>
-            <item>number 9 has binary representation 1001 and contains a binary gap of length 2</item>
-            <item>number 529 has binary representation 1000010001 and contains two binary gaps: one of length 4 and one of length 3</item>
-            <item>number 20 has binary representation 10100 and contains one binary gap of length 1</item>
-            <item>number 15 has binary representation 1111 and has no binary gaps</item>
-            <item>number 32 has binary representation 100000 and has no binary gaps</item>
-            </list></example>
-             Write a function that, given a positive integer N, returns the length of its longest binary gap.
-             The function should return 0 if N doesn't contain a binary gap.
-             Write an efficient algorithm for the following assumptions:
-             N is an integer within the range[1..2, 147, 483, 647].
             </summary>
-            <param name="N"></param>
+            <param name="A"></param>
             <returns></returns>
         </member>
-        <member name="M:Codility.CodilitySolutions.MissingInteger_solution(System.Int32[])">
-             <summary>
-             Write a function that, given an array A of N integers, 
-             returns the smallest positive integer(greater than 0) that does not occur in A.
-            <example>For example: <list type="table">
-            <item>Given A = [1, 3, 6, 4, 1, 2], the function should return 5.</item>
-            <item>Given A = [1, 2, 3], the function should return 4.</item>
-            <item>Given A = [−1, −3], the function should return 1.</item>
-            </list></example>
-            Write an efficient algorithm for the following assumptions:
+        <member name="M:Codility.CodilitySolutions.Distinct(System.Int32[])">
+            <summary>
+            Lesson 6.1 Disitnct (tiny cute one line solution) :)
+            Write a function that, given an array A consisting of N integers, returns the number of distinct values in array A.
+            <example>
+            For example, given array A consisting of six elements such that:
             <list type="table">
-            <item>N is an integer within the range[1..100, 000];</item>
+            <item>A[0] = 2</item>
+            <item>A[1] = 1</item>
+            <item>A[2] = 1</item>
+            <item>A[3] = 2</item>
+            <item>A[4] = 3</item>
+            <item>A[5] = 1</item></list>
+            the function should return 3, because there are 3 distinct values appearing in array A, namely 1, 2 and 3.
+            </example>
+            Write an efficient algorithm for the following assumptions:
+            <list type="bullet">
+            <item>N is an integer within the range[0..100, 000];</item>
             <item>each element of array A is an integer within the range[−1, 000, 000..1, 000, 000].</item>
             </list>
             </summary>
             <param name="A"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.Fish(System.Int32[],System.Int32[])" -->
+        <member name="M:Codility.CodilitySolutions.Brackets(System.String)">
+            <summary>
+            Lesson 7.1 Brackets
+            A string S consisting of N characters is considered to be properly nested if any of the following conditions is true:
+            <list type="bullet">
+            <item>S is empty;</item>
+            <item>S has the form "(U)" or "[U]" or "{U}" where U is a properly nested string;</item>
+            <item>S has the form "VW" where V and W are properly nested strings.</item>
+            </list>
+            Write a function that, given a string S consisting of N characters, returns 1 if S is properly nested and 0 otherwise.
+            <example>
+            For example, given S = "{[()()]}", the function should return 1 and given S = "([)()]", the function should return 0, as explained above.
+            </example>
+            Write an efficient algorithm for the following assumptions:
+            <list type="bullet">
+            <item>N is an integer within the range[0..200, 000];</item>
+            <item>string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".</item>
+            </list>
+            </summary>
+            <param name="S"></param>
             <returns></returns>
         </member>
     </members>
