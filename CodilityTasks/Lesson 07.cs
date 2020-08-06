@@ -7,6 +7,51 @@ namespace Codility
     public partial class CodilitySolutions
     {
         /// <summary>
+        /// A string S consisting of N characters is called properly nested if:
+        /// <list type="bullet">
+        /// <item>S is empty;</item>
+        /// <item>S has the form "(U)" where U is a properly nested string;</item>
+        /// <item>S has the form "VW" where V and W are properly nested strings.</item>
+        /// </list>
+        /// Write a function that, given a string S consisting of N characters, returns 1 if string S is properly nested and 0 otherwise.
+        /// <example>
+        /// For example, given S = "(()(())())", the function should return 1 and given S = "())", the function should return 0.
+        /// </example>
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[0..1, 000, 000];</item>
+        /// <item>string S consists only of the characters "(" and/or ")".</item>
+        /// </list>
+        /// </summary>
+        /// <param name="S"></param>
+        /// <returns></returns>
+        public int Nesting(String S)
+        {
+            Stack<int> bracketsStack = new Stack<int>();
+
+            for (int i = 0; i < S.Length; i++)
+            {
+                if (S[i] == '(')
+                {
+                    bracketsStack.Push(i);
+                }
+                else if (S[i] == ')')
+                {
+                    if (bracketsStack.Count > 0)
+                    {
+                        bracketsStack.Pop();
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+
+            return bracketsStack.Count > 0 ? 0 : 1;
+        }
+
+        /// <summary>
         /// You are given two non-empty arrays A and B consisting of N integers. Arrays A and B represent N voracious fish in a river, ordered downstream along the flow of the river.
         /// The fish are numbered from 0 to N − 1. If P and Q are two fish and P<Q, then fish P is initially upstream of fish Q.Initially, each fish has a unique position.
         /// Fish number P is represented by A[P] and B[P]. Array A contains the sizes of the fish.All its elements are unique.Array B contains the directions of the fish.It contains only 0s and/or 1s, where:

@@ -15,6 +15,15 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData("(()(())())", 1)]
+        [InlineData("())", 0)]
+        [InlineData(")(", 0)]
+        public void NestingTest(String S, int expected)
+        {
+            Assert.Equal(expected, _codility.Nesting(S));
+        }
+
+        [Theory]
         [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 0, 1, 0, 0, 0 }, 2)]
         [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 0, 0, 0, 0, 1 }, 5)]
         [InlineData(new int[] { 4, 3, 2, 1, 5 }, new int[] { 1, 0, 1, 0, 1 },  3)]

@@ -548,6 +548,27 @@
             <param name="A"></param>
             <returns></returns>
         </member>
+        <member name="M:Codility.CodilitySolutions.Nesting(System.String)">
+            <summary>
+            A string S consisting of N characters is called properly nested if:
+            <list type="bullet">
+            <item>S is empty;</item>
+            <item>S has the form "(U)" where U is a properly nested string;</item>
+            <item>S has the form "VW" where V and W are properly nested strings.</item>
+            </list>
+            Write a function that, given a string S consisting of N characters, returns 1 if string S is properly nested and 0 otherwise.
+            <example>
+            For example, given S = "(()(())())", the function should return 1 and given S = "())", the function should return 0.
+            </example>
+            Write an efficient algorithm for the following assumptions:
+            <list type="bullet">
+            <item>N is an integer within the range[0..1, 000, 000];</item>
+            <item>string S consists only of the characters "(" and/or ")".</item>
+            </list>
+            </summary>
+            <param name="S"></param>
+            <returns></returns>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:Codility.CodilitySolutions.Fish(System.Int32[],System.Int32[])" -->
         <member name="M:Codility.CodilitySolutions.Brackets(System.String)">
             <summary>
