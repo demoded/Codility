@@ -7,6 +7,57 @@ namespace Codility
     public partial class CodilitySolutions
     {
         /// <summary>
+        /// You are going to build a stone wall. The wall should be straight and N meters long, and its thickness should be constant; however, it should have different heights in different places. The height of the wall is specified by an array H of N positive integers. H[I] is the height of the wall from I to I+1 meters to the right of its left end. In particular, H[0] is the height of the wall's left end and H[N−1] is the height of the wall's right end.
+        /// The wall should be built of cuboid stone blocks(that is, all sides of such blocks are rectangular). Your task is to compute the minimum number of blocks needed to build the wall.
+        /// Write a function that, given an array H of N positive integers specifying the height of the wall, returns the minimum number of blocks needed to build it.
+        /// <example>
+        /// For example, given array H containing N = 9 integers:
+        /// <list type="table">
+        ///  <item>H[0] = 8</item>
+        ///  <item>H[1] = 8</item>
+        ///  <item>H[2] = 5</item>
+        ///  <item>H[3] = 7</item>
+        ///  <item>H[4] = 9</item>
+        ///  <item>H[5] = 8</item>
+        ///  <item>H[6] = 7</item>
+        ///  <item>H[7] = 4</item>
+        ///  <item>H[8] = 8</item>
+        ///  </list>
+        /// the function should return 7. The figure shows one possible arrangement of seven blocks.
+        /// https://codility-frontend-prod.s3.amazonaws.com/media/task_static/stone_wall/static/images/auto/4f1cef49cc46d451e88109d449ab7975.png
+        /// </example>
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range[1..100, 000];</item>
+        /// <item>each element of array H is an integer within the range[1..1, 000, 000, 000].</item>
+        /// </list>
+        /// </summary>
+        /// <param name="H"></param>
+        /// <returns></returns>
+        public int StoneWall(int[] H)
+        {
+            int closedBlocks = 0;
+            Stack<int> openedBlocks = new Stack<int>();
+
+            for (int i = 0; i < H.Length; i++)
+            {
+                while (openedBlocks.Count > 0 && H[i] < openedBlocks.Peek())
+                {
+                    closedBlocks++;
+                    openedBlocks.Pop();
+                }
+
+                if ((openedBlocks.Count == 0) ||
+                    (openedBlocks.Count > 0 && H[i] > openedBlocks.Peek()))
+                {
+                    openedBlocks.Push(H[i]);
+                }
+            }
+
+            return closedBlocks + openedBlocks.Count;
+        }
+
+        /// <summary>
         /// A string S consisting of N characters is called properly nested if:
         /// <list type="bullet">
         /// <item>S is empty;</item>

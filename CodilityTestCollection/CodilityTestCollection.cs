@@ -15,6 +15,13 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 8, 8, 5, 7, 9, 8, 7, 4, 8 }, 7)]
+        public void StoneWallTest(int[] H, int expected)
+        {
+            Assert.Equal(expected, _codility.StoneWall(H));
+        }
+
+        [Theory]
         [InlineData("(()(())())", 1)]
         [InlineData("())", 0)]
         [InlineData(")(", 0)]
