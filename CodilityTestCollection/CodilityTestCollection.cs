@@ -15,6 +15,16 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 3, 4, 3, 2, 3, -1, 3, 3 }, 0)]
+        [InlineData(new int[] { 3, 4, 3, 2, 3, -1, 3, 5 }, -1)]
+        [InlineData(new int[] { 3 }, 0)]
+        [InlineData(new int[] { }, -1)]
+        public void Dominator(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.Dominator(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 8, 8, 5, 7, 9, 8, 7, 4, 8 }, 7)]
         public void StoneWallTest(int[] H, int expected)
         {

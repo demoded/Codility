@@ -104,7 +104,7 @@ namespace Codility
 
         /// <summary>
         /// You are given two non-empty arrays A and B consisting of N integers. Arrays A and B represent N voracious fish in a river, ordered downstream along the flow of the river.
-        /// The fish are numbered from 0 to N − 1. If P and Q are two fish and P<Q, then fish P is initially upstream of fish Q.Initially, each fish has a unique position.
+        /// The fish are numbered from 0 to N − 1. If P and Q are two fish and P&lt;Q&gt;, then fish P is initially upstream of fish Q.Initially, each fish has a unique position.
         /// Fish number P is represented by A[P] and B[P]. Array A contains the sizes of the fish.All its elements are unique.Array B contains the directions of the fish.It contains only 0s and/or 1s, where:
         /// <list type="bullet">
         /// <item>0 represents a fish flowing upstream,</item>
