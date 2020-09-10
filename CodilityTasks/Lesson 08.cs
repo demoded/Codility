@@ -37,42 +37,41 @@ namespace Codility
         /// <returns></returns>
         public int Dominator(int[] A)
         {
-            //linq is good but didn't pass performance loading tests
-            //ret = Array.FindIndex(A, i => i == A.GroupBy(i => i).Where(i => i.Count() > A.Length / 2).FirstOrDefault()?.Key);
+            return Array.IndexOf(A, A.GroupBy(i => i).Where(i => i.Count() > A.Length / 2).FirstOrDefault()?.Key);
 
-            Dictionary<int, int> hash = new Dictionary<int, int>();
+            //Dictionary<int, int> hash = new Dictionary<int, int>();
 
-            if (A.Length == 0)
-            {
-                return -1;
-            }
+            //if (A.Length == 0)
+            //{
+            //    return -1;
+            //}
 
-            if (A.Length == 1)
-            {
-                return 0;
-            }
+            //if (A.Length == 1)
+            //{
+            //    return 0;
+            //}
 
-            hash.Add(A[0], 1);
-            int cur = 0;
+            //hash.Add(A[0], 1);
+            //int cur = 0;
 
-            for (int i = 1; i < A.Length; i++)
-            {
-                if (hash.TryGetValue(A[i], out cur))
-                {
-                    cur++;
-                    if (cur > A.Length / 2)
-                    {
-                        return Array.FindIndex(A, f => f == A[i]);
-                    }
-                    hash[A[i]] = cur;
-                }
-                else
-                {
-                    hash.Add(A[i], 1);
-                }
-            }
+            //for (int i = 1; i < A.Length; i++)
+            //{
+            //    if (hash.TryGetValue(A[i], out cur))
+            //    {
+            //        cur++;
+            //        if (cur > A.Length / 2)
+            //        {
+            //            return Array.FindIndex(A, f => f == A[i]);
+            //        }
+            //        hash[A[i]] = cur;
+            //    }
+            //    else
+            //    {
+            //        hash.Add(A[i], 1);
+            //    }
+            //}
 
-            return -1;
+            //return -1;
         }
     }
 }
