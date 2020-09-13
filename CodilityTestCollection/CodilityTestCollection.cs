@@ -15,11 +15,21 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 3, 4, 3, 2, 3, -1, 3, 3 }, 4)]
+        [InlineData(new int[] { 4, 3, 4, 4, 4, 2 }, 2)]
+        [InlineData(new int[] { 4, 4, 2, 5, 3, 4, 4, 4 }, 3)]
+        [InlineData(new int[] { 1, 2, 3, 4, 5 }, 0)]
+        public void EquiLeaderTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.EquiLeader(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 3, 4, 3, 2, 3, -1, 3, 3 }, 0)]
         [InlineData(new int[] { 3, 4, 3, 2, 3, -1, 3, 5 }, -1)]
         [InlineData(new int[] { 3 }, 0)]
         [InlineData(new int[] { }, -1)]
-        public void Dominator(int[] A, int expected)
+        public void DominatorTest(int[] A, int expected)
         {
             Assert.Equal(expected, _codility.Dominator(A));
         }
