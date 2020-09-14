@@ -106,75 +106,68 @@ namespace Codility
         /// <returns></returns>
         public int EquiLeader(int[] A)
         {
-            int sameLeadersCount = 0;
-
-            for (int i = 0; i < A.Length - 1; i++)
-            {
-                var a1 = EquiLeaderLocal(SubArray(A, 0, i + 1));
-                var a2 = EquiLeaderLocal(SubArray(A, i + 1, A.Length - i + 1));
-                if (a1 == a2 && a1 > 0)
-                {
-                    sameLeadersCount++;
-                }
-            }
-
-            return sameLeadersCount;
-        }
-
-        int[] SubArray(int[] array, int offset, int length)
-        {
-            return array.Skip(offset)
-                        .Take(length)
-                        .ToArray();
-        }
-
-        int EquiLeaderLocal(int[] A)
-        {
-            Stack<int> stack = new Stack<int>();
+            int equiLeadersCount = 0;
+            int leader;
+            int value = -1;
             int count = 0;
 
-            for (int i = 0; i < A.Length; i++)
+            //find a leader value
+            foreach (int i in A)
             {
-                if (stack.Any())
+                if (count == 0)
                 {
-                    if (stack.Peek() == A[i])
-                    {
-                        count++;
-                    }
-                    else
-                    {
-                        count--;
-                        if (count == 0)
-                        {
-                            stack.Pop();
-                            stack.Push(A[i]);
-                            count = 1;
-                        }
-                    }
+                    count++;
+                    value = i;
                 }
                 else
                 {
-                    stack.Push(A[i]);
-                    count = 1;
+                    if (value != i)
+                    {
+                        count--;
+                    }
+                    else
+                    {
+                        count++;
+                    }
                 }
             }
 
-            if (stack.Any())
+            value = count > 0 ? value : -1;
+            count = 0;
+
+            //count leader inclusions in array
+            foreach (int i in A)
             {
-                int totalCount = 0;
-                foreach (int c in A)
+                if (i == value)
                 {
-                    if (c == stack.Peek())
-                    {
-                        totalCount++;
-                    }
+                    count++;
                 }
-                return totalCount > A.Length / 2 ? stack.Peek() : 0;
             }
-            else
+
+            //check if leader is a true leader :)
+            leader = count > A.Length / 2 ? value : -1;
+
+            //splitting array into 2 ranges (leftRange and rightRange) and checking leaders for each range
+            int leftRangeLeaders = 0;
+            for (int i = 0; i < A.Length; i++)
             {
-                return -1;
+                if (A[i] == leader)
+                {
+                    leftRangeLeaders++;
+                }
+
+                int leftRangeLength = i + 1;
+                int rightRangeLength = A.Length - leftRangeLength;
+
+                if (rightRangeLength > 0 &&
+                    leftRangeLeaders > leftRangeLength / 2 &&
+                    (count - leftRangeLeaders) > rightRangeLength / 2)
+                {
+                    equiLeadersCount++;
+                }
             }
+
+            return equiLeadersCount;
         }
     }
 }
