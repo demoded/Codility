@@ -15,6 +15,14 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 3, 2, -6, 4, 0 }, 5)]
+        [InlineData(new int[] { 3, 2, -6, 14, 0 }, 14)]
+        public void MaxSliceSum(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.MaxSliceSum(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 3, 4, 3, 2, 3, -1, 3, 3 }, 4)]
         [InlineData(new int[] { 4, 3, 4, 4, 4, 2 }, 2)]
         [InlineData(new int[] { 4, 4, 2, 5, 3, 4, 4, 4 }, 3)]
