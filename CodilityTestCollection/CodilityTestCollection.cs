@@ -15,6 +15,15 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(new int[] { 23171, 21011, 21123, 21366, 21013, 21367 }, 356)]
+        [InlineData(new int[] { 0, 2000 }, 2000)]
+        [InlineData(new int[] { }, 0)]
+        public void MaxProfitTest(int[] A, int expected)
+        {
+            Assert.Equal(expected, _codility.MaxProfit(A));
+        }
+
+        [Theory]
         [InlineData(new int[] { 3, 2, -6, 4, 0 }, 5)]
         [InlineData(new int[] { 3, 2, -6, 14, 0 }, 14)]
         public void MaxSliceSum(int[] A, int expected)
