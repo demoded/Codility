@@ -7,6 +7,67 @@ namespace Codility
 {
     public partial class CodilitySolutions
     {
+
+        /// <summary>
+        /// A non-empty array A consisting of N integers is given.
+        /// A triplet (X, Y, Z), such that 0 ≤ X &lt; Y &lt; Z &lt; N, is called a double slice.
+        /// The sum of double slice (X, Y, Z) is the total of A[X + 1] + A[X + 2] + ... + A[Y − 1] + A[Y + 1] + A[Y + 2] + ... + A[Z − 1].
+        /// <example>
+        /// For example, array A such that:
+        /// <list type="table">
+        /// <item>A[0] = 3</item>
+        /// <item>A[1] = 2</item>
+        /// <item>A[2] = 6</item>
+        /// <item>A[3] = -1</item>
+        /// <item>A[4] = 4</item>
+        /// <item>A[5] = 5</item>
+        /// <item>A[6] = -1</item>
+        /// <item>A[7] = 2</item>
+        /// </list></example>
+        /// contains the following example double slices:
+        /// <list type="bullet">
+        /// <item>double slice (0, 3, 6), sum is 2 + 6 + 4 + 5 = 17,</item>
+        /// <item>double slice (0, 3, 7), sum is 2 + 6 + 4 + 5 − 1 = 16,</item>
+        /// <item>double slice (3, 4, 5), sum is 0.</item>
+        /// </list>
+        /// the function should return 17, because no double slice of array A has a sum of greater than 17.
+        /// Write an efficient algorithm for the following assumptions:
+        /// <list type="bullet">
+        /// <item>N is an integer within the range [3..100,000];</item>
+        /// <item>each element of array A is an integer within the range [−10,000..10,000].</item>
+        /// </list>
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public int MaxDoubleSliceSum(int[] A)
+        {
+            int n = A.Length;
+            int[] leftPrefixSum = new int[n];
+            int[] rightPrefixSum = new int[n];
+
+            //calculate sums starting from the beginning of A
+            for (int i = 1; i < n - 1; i++)
+            {
+                leftPrefixSum[i] = Math.Max(leftPrefixSum[i - 1] + A[i], 0);                
+            }
+
+            //calculate sums stepping backwards from the end to beginning of A
+            for (int i = n-2; i > 0; i--)
+            {
+                rightPrefixSum[i] = Math.Max(rightPrefixSum[i + 1] + A[i], 0);
+            }
+
+            int maxDoubleSum = 0;
+
+            //using precalculated sum arrays, find biggest sum of two
+            for (int i = 1; i < n - 1; i++)
+            {
+                maxDoubleSum = Math.Max(leftPrefixSum[i - 1] + rightPrefixSum[i + 1], maxDoubleSum);
+            }
+
+            return maxDoubleSum;
+        }
+
         /// <summary>
         /// An array A consisting of N integers is given. It contains daily prices of a stock share for a period of N consecutive days. 
         /// If a single share was bought on day P and sold on day Q, where 0 ≤ P ≤ Q &lt; N, 
