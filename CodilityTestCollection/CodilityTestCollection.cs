@@ -15,8 +15,16 @@ namespace Codility_UnitTests
         }
 
         [Theory]
+        [InlineData(24, 8)]
+        [InlineData(int.MaxValue, 2)]
+        public void CountFactorsTest(int N, int expected)
+        {
+            Assert.Equal(expected, _codility.CountFactors(N));
+        }
+
+        [Theory]
         [InlineData(new int[] { 3, 2, 6, -1, 4, 5, -1, 2 }, 17)]
-        public void MaxDoubleSliceSum(int[] A, int expected)
+        public void MaxDoubleSliceSumTest(int[] A, int expected)
         {
             Assert.Equal(expected, _codility.MaxDoubleSliceSum(A));
         }
